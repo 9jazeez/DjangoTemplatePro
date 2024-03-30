@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %} base page {% endblock title %}</title>
+        <link rel="stylesheet" href="{%static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{%static 'css/base.css' %}"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+
+        <script src="{%static 'js/jquery-3.6.0.js' %}"></script>
+        <script src="{%static 'js/bootstrap.js' %}"></script>
+        <script src="{%static 'js/base.js' %}"></script>
+
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>    
+    
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-staic-top">
+            <div class="container">
+                    <a class="navbar-brand"><button class="btn btn-primary"> Home </button></a>
+                    <ui class=" nav navbar-nav">
+                        <li><a class="navbar-link" href="{% url 'basicApp:home' %}">
+                            <button class="btn btn-outline-success"> Home </button>
+                        </a></li>
+                    </ui>
+                    <ul class="nav navbar-nav">
+                        <li><a class="navbar-link" href="{% url 'index' %}">
+                            <button class="btn btn-outline-success"> Index </button>
+                        </a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li><a class="navbar-link" href="{% url 'basicApp:help' %}">
+                            <button class="btn btn-outline-success"> Help </button>
+                        </a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li><a class="navbar-link" href="{% url 'admin:index' %}">
+                            <button class="btn btn-outline-success"> Admin </button>
+                        </a></li>
+                    </ul>
+            </div>
+        </nav>
+        
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

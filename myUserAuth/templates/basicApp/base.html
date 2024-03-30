@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %} base page {% endblock title %}</title>
+        <link rel="stylesheet" href="{%static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{%static 'css/base.css' %}"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+
+        <script src="{%static 'js/jquery-3.6.0.js' %}"></script>
+        <script src="{%static 'js/bootstrap.js' %}"></script>
+        <script src="{%static 'js/base.js' %}"></script>
+
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>    
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default navbar-static-top">
+                <div class="container">
+                    <a class="navbar navbar-brand" href="{% url 'index' %}">
+                        <button class="btn btn-outline-success">
+                        Index
+                    </button></a>
+    
+                    <p>
+                        <a class="navbar-link" href="{% url 'basicApp:home' %}">
+                            <button class="btn btn-outline-success"> Home </button>
+                        </a>
+                        <a class="navbar-link" href="{% url 'basicApp:register' %}">
+                            <button class="btn btn-outline-success">Register</button>
+                        </a>
+                        <a class="navbar-link" href="{% url 'admin:index' %}">
+                            <button class="btn btn-outline-success"> Admin </button>
+                        </a>
+
+                        {% if user.is_authenticated %}
+                            <a class="navbar-link" href="{% url 'logout' %}">
+                                <button class="btn btn-outline-success"> Logout </button>
+                            </a>
+                        {% else %}
+                            <a class="navbar-link" href="{% url 'basicApp:login' %}">
+                                <button class="btn btn-outline-success"> Login </button>
+                            </a>
+
+                        {% endif %}
+                    </p>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="container">
+            {% if user.is_authenticated %}
+                <div class="card text-center">
+                    <h5 class="card-header">
+                        Welcome back {{ user.username|title }}
+                    </h5>
+                    <div class="card-body">
+                        <p class="card-title"> {{ user.email }}</p>
+                        <a href="{%url 'logout' %}"><button class="btn btn-primary"> Logout </button></a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <p>9jazeez Django for All!</p>
+                    </div>
+                </div>
+            {% else %}
+                <h1> Anonymous </h1>
+            
+            {% endif %}
+            
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </body>
+</html>

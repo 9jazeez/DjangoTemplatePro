@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+{% extends 'basicApp/base.html' %}
+
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %} home page{% endblock title %}</title>
+        <link rel="stylesheet" href="{%static 'css/bootstrap.css' %}">
+        <script src="{%static 'js/jquery-3.6.0.js' %}"></script>
+        <script src="{%static 'js/bootstrap.js' %}"></script>
+        <link rel="stylesheet" href="{%static 'css/djangoApp2/home.css' %}" />
+    </head>
+    <body>
+        {% block content %}
+        <div class="container">
+            <div class="jumbotron">
+                <h1>HOME</h1>
+                <a href="{% url 'index' %}">index</a>
+                <a href="{% url 'basicApp:home' %}">home</a>
+                <a href="{% url 'basicApp:help' %}">help</a>
+                <a href="{% url 'admin:index' %}">admin</a>
+            </div>
+        </div>
+        {% endblock content %}
+    </body>
+</html>

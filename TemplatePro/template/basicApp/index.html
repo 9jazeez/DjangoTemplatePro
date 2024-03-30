@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+{% extends 'basicApp/extra.html' %}
+
+{% load static %}
+{% load basicApp_extraFilter %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}index page{% endblock title %}</title>
+        <link rel="stylesheet" href="{%static 'css/bootstrap.css' %}">
+        <script src="{%static 'js/jquery-3.6.0.js' %}"></script>
+        <script src="{%static 'js/bootstrap.js' %}"></script>
+        <link rel="stylesheet" href="{%static 'css/djangoApp2/home.css' %}" />
+    
+    </head>
+    <body>
+        {#% block sidebar %#}
+        {#% endblock sidebar %#}
+        
+        <div class="container">
+            {% block content %}
+            <div class="jumbotron">
+                <h1>INDEX</h1>
+                <a href="{% url 'index' %}">index</a>
+                <a href="{% url 'basicApp:home' %}">home</a>
+                <a href="{% url 'basicApp:help' %}">help</a>
+                <a href="{% url 'admin:index' %}">admin</a>
+
+                <h1> {{ text|mytitle }} </h1>
+                <h1> {{ text2|cun:'morning'}}</h1>
+
+            </div>
+            {% endblock content %}
+        </div>
+    </body>
+</html>
